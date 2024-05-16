@@ -12,7 +12,6 @@ const SearchBar = ({salts , setSalts}) => {
         axios
             .get(BASE_URL + `q=${searchText.toLowerCase()}&pharmacyIds=1,2,3`)
             .then((res) => {
-                console.log(res.data.data.saltSuggestions);
                 const saltsData = res.data.data.saltSuggestions;
                 const filteredSalts = saltsData.map((salt) => {
                     const availableForms = salt.available_forms.map((form) => ({
@@ -65,7 +64,6 @@ const SearchBar = ({salts , setSalts}) => {
                         availableForms: availableForms
                     };
                 });
-                console.log(filteredSalts);
                 setSalts(filteredSalts);
             })
             .catch((err) => {
